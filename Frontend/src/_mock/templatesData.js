@@ -1,0 +1,103 @@
+// import { v4 as uuidv4 } from 'uuid';
+
+// export const templatesData = [
+//   {
+//     id: uuidv4(),
+//     type: 'editor',
+//     heading: 'First Follow Up',
+//     Subject: 'A gentle Reminder',
+//     headingTheme: 'info',
+//     body: '<p>I was just wondering if you received the email I sent you. I was very much looking forward to hearing from you! 1 <br/> <br/> Waiting for your positive response.<p>',
+//   },
+//   {
+//     id: uuidv4(),
+//     type: 'editor',
+//     heading: 'Checking On',
+//     Subject: 'A gentle Reminder',
+//     headingTheme: 'success',
+//     body: '<p>I was just wondering if you received the email I sent you. I was very much looking forward to hearing from you! 1 <br/> <br/> Waiting for your positive response.<p>',
+//   },
+//   {
+//     id: uuidv4(),
+//     type: 'editor',
+//     heading: 'Direct Approach',
+//     Subject: 'A gentle Reminder',
+//     headingTheme: 'warning',
+//     body: '<p>I was just wondering if you received the email I sent you. I was very much looking forward to hearing from you! 1 <br/> <br/> Waiting for your positive response.<p>',
+//   },
+//   {
+//     id: uuidv4(),
+//     type: 'editor',
+//     heading: 'Checking On ',
+//     Subject: 'A gentle Reminder',
+//     headingTheme: 'success',
+//     body: '<p>I was just wondering if you received the email I sent you. I was very much looking forward to hearing from you! 1 <br/> <br/> Waiting for your positive response.<p>',
+//   },
+//   {
+//     id: uuidv4(),
+//     type: 'editor',
+//     heading: 'Checking On ',
+//     Subject: 'A gentle Reminder',
+//     headingTheme: 'success',
+//     body: '<p>I was just wondering if you received the email I sent you. I was very much looking forward to hearing from you! 1 <br/> <br/> Waiting for your positive response.<p>',
+//   },
+//   {
+//     id: uuidv4(),
+//     type: 'editor',
+//     heading: 'First Follow-Up',
+//     Subject: 'A gentle Reminder',
+//     headingTheme: 'info',
+//     body: '<p>I was just wondering if you received the email I sent you. I was very much looking forward to hearing from you! 1 <br/> <br/> Waiting for your positive response.<p>',
+//   },
+//   {
+//     id: uuidv4(),
+//     type: 'editor',
+//     heading: 'SEO Sending',
+//     Subject: 'A gentle Reminder',
+//     headingTheme: 'error',
+//     body: '<p>I was just wondering if you received the email I sent you. I was very much looking forward to hearing from you! 1 <br/> <br/> Waiting for your positive response.<p>',
+//   },
+//   {
+//     id: uuidv4(),
+//     type: 'editor',
+//     heading: 'Direct Approach',
+//     Subject: 'A gentle Reminder',
+//     headingTheme: 'warning',
+//     body: '<p>I was just wondering if you received the email I sent you. I was very much looking forward to hearing from you! 1 <br/> <br/> Waiting for your positive response.<p>',
+//   },
+// ];
+
+// export const newData = [
+//   {
+//     id: uuidv4(),
+//     type: 'editor',
+//     heading: 'First Follow-Up',
+//     Subject: 'A gentle Reminder',
+//     headingTheme: 'info',
+//     body: '<p>I was just wondering if you received the email I sent you. I was very much looking forward to hearing from you! 1 <br/> <br/> Waiting for your positive response.<p>',
+//   },
+//   {
+//     id: uuidv4(),
+//     type: 'editor',
+//     heading: 'SEO Sending',
+//     Subject: 'A gentle Reminder',
+//     headingTheme: 'error',
+//     body: '<p>I was just wondering if you received the email I sent you. I was very much looking forward to hearing from you! 1 <br/> <br/> Waiting for your positive response.<p>',
+//   },
+//   {
+//     id: uuidv4(),
+//     type: 'editor',
+//     heading: 'Direct Approach',
+//     Subject: 'A gentle Reminder',
+//     headingTheme: 'warning',
+//     body: '<p>I was just wondering if you received the email I sent you. I was very much looking forward to hearing from you! 1 <br/> <br/> Waiting for your positive response.<p>',
+//   },
+//   {
+//     id: uuidv4(),
+//     type: 'editor',
+//     heading: 'Checking On',
+//     Subject: 'A gentle Reminder',
+//     headingTheme: 'success',
+//     body: '<p>I was just wondering if you received the email I sent you. I was very much looking forward to hearing from you! 1 <br/> <br/> Waiting for your positive response.<p>',
+//   },
+// ];

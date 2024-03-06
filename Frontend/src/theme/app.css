@@ -1,0 +1,40 @@
+.growtoro-gpt-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.growtoro-gpt-input input {
+  width: 100%;
+  border: 0.5px solid #e1e0e0;
+  padding: 1rem;
+  font-size: 1rem;
+  box-shadow: 0 0 5px #e1e0e0;
+  border-radius: 6px;
+}
+
+.growtoro-gpt-input input:hover,
+.growtoro-gpt-input input:focus-visible {
+  outline: none;
+}
+
+/* .growtoro-gpt-input div {
+  margin-left: -3rem;
+  transform: rotate(-45deg);
+} */
+
+.growtoro-gpt-regenerate-button {
+  color: #7c7c7c !important;
+  font-weight: 500;
+  border: 1px solid #e1e0e0;
+}
+
+.growtoro-gpt-regenerate-button:hover {
+  background-color: rgba(236, 236, 241, 1);
+  border: 1px solid #e1e0e0;
+}
+
+#unibox-isolated-content > html {
+  font-family: 'arial';
+}

@@ -1,0 +1,94 @@
+<?php
+
+namespace App\Console;
+
+use App\Models\Emails\DripCampaign;
+use App\Models\Emails\DripSequence;
+use App\Models\Emails\EmailListSubscriber;
+use App\Models\Emails\TimeFilter;
+use App\Models\Tenant;
+use App\Models\tenant_db_name;
+use Carbon\Carbon;
+use Carbon\CarbonPeriod;
+use Illuminate\Console\Scheduling\Schedule;
+use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\DB;
+
+class Kernel extends ConsoleKernel
+{
+    /**
+     * Define the application's command schedule.
+     *
+     * @param \Illuminate\Console\Scheduling\Schedule $schedule
+     * @return void
+     */
+    protected function schedule(Schedule $schedule)
+    {
+        Tenant::all()->each(
+            function ($tenant) use ($schedule){
+                $this->check_tenant($tenant,$schedule);
+            });
+
+//        $schedule->command('drip-campaign:send')->everyMinute();
+//        $schedule->command('drip-sq-campaign:send')->everyMinute();
+//        $schedule->command('drip:reply')->hourly();
+        $schedule->command('drip:reply')->everyTwoMinutes();
+    }
+
+    public function check_tenant($tenant,$schedule)
+    {
+        $db_count = tenant_db_name::where('tenant_id', $tenant->id)->first();
+        if ($db_count){
+            Config::set('tenancy.database.template_tenant_connection', $db_count->db_con_use);
+            DB::purge('tenant');
+            Config::set('database.connections.tenant.host', env('DB_HOST'));
+            Config::set('database.connections.tenant.username', env('DB_USERNAME'));
+            Config::set('database.connections.tenant.password', env('DB_PASSWORD'));
+            Config::set('database.connections.tenant.database', $tenant->tenancy_db_name);
+            Config::set('database.default', 'tenant');
+            DB::reconnect('tenant');
+            $this->drip_campaign_run($tenant->id,$schedule);
+        }
+    }
+
+    protected function drip_campaign_run($tenant_id,$schedule)
+    {
+        $campaigns = DripCampaign::where('status',1)->orWhere('status',2)->get();
+        foreach ($campaigns as $campaign){
+            $time = TimeFilter::where('drip_id', $campaign->id)->first();
+            if ($time && $time->time_zone)
+            {
+                date_default_timezone_set($time->time_zone);
+            }
+            $sequence = DripSequence::where('drip_id', $campaign->id)->first();
+
+            $startTime  = Carbon::parse($time->start_at); // Replace with your desired start time
+            $endTime    = Carbon::parse($time->stop_at);   // Replace with your desired end time
+// Create a CarbonPeriod between the start and end times with a 1-hour interval
+            $period = CarbonPeriod::create($startTime, "$campaign->delay_email minutes", $endTime);
+
+// Iterate through the period
+            foreach ($period as $datetime) {
+                $time = $datetime->format('H:i');
+                $subscriber_list = EmailListSubscriber::where([['list_id', $campaign->list_id ], ['status', 1]])->get();
+                foreach ($subscriber_list as $subscriber){
+                    $schedule->command('dynamic-campaign:send', ['--tenant_id' => $tenant_id,
+                        '--campaign_id'     => $campaign->id,
+                        '--subscriber_id'   => $subscriber->id,
+                        '--time'            => $time,
+                        '--sequence_id'     => $sequence->id
+                        return Carbon::now()->format('H:i') == $time;
+                    })->withoutOverlapping();
+                }
+            }
+        }
+    }
+
+    protected function commands()
+    {
+        $this->load(__DIR__ . '/Commands');
+
+        require base_path('routes/console.php');
+    }
+}

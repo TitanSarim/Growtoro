@@ -1,0 +1,4 @@
+Email,First Name,Last Name,IMAP Username,IMAP Password,IMAP Host,IMAP Port,SMTP Username,SMTP Password,SMTP Host,SMTP Port,Daily Limit,Warmup Enabled,Warmup Limit,Warmup Increment
+jacqueline@sjkinteriors.com,Jacqueline,Kessler,jacqueline@sjkinteriors.com,he1pwanted!,mail.privateemail.com,993,jacqueline@sjkinteriors.com,he1pwanted!,mail.privateemail.com,465,20,TRUE,20,4
+JK@sjkinteriordesign.com,Jacqueline,Kessler,JK@sjkinteriordesign.com,he1pwanted!,mail.privateemail.com,993,JK@sjkinteriordesign.com,he1pwanted!,mail.privateemail.com,465,20,TRUE,20,4
+JK@studiojkinteriors.com,Jacqueline,Kessler,JK@studiojkinteriors.com,he1pwanted!,mail.privateemail.com,993,JK@studiojkinteriors.com,he1pwanted!,mail.privateemail.com,465,20,TRUE,20,4

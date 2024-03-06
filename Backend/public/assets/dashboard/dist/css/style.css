@@ -1,0 +1,8 @@
+.btn_disable{
+    pointer-events: none;
+    opacity: 0.5;
+}
+.csv_modal_check{
+    max-height: 500px;
+    overflow-y: scroll;
+}

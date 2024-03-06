@@ -1,0 +1,1555 @@
+swagger: '2.0'
+info:
+  description: GROWTORO APi's
+  version: 1.0.0
+  title: GROWTORO API DOCUMENTATION
+basePath: /api/v1
+
+paths:
+  #  user login
+  /tenant/register:
+    post:
+      tags:
+        - Auth
+      summary: User Registration
+      description: 'Register Account'
+      operationId: ten1
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: name
+          type: string
+          required: true
+        - in: query
+          name: email
+          type: string
+          required: true
+        - in: query
+          name: password
+          format: password
+          type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+        '400':
+          description: Bad request
+
+  /tenant/login:
+    post:
+      tags:
+        - Auth
+      summary: User Login
+      description: 'Login Account'
+      operationId: ten2
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: email
+          type: string
+          required: true
+        - in: query
+          name: password
+          format: password
+          type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+        '400':
+          description: Bad request
+
+
+  /tenant/{tenant_id}/my/profile:
+    get:
+      tags:
+        - Profile
+      summary: User Profile
+      description: 'User Profile'
+      operationId: profile001
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: tenant_id
+          type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+        '400':
+          description: Bad request
+      security:
+        - api_key: [ ]
+
+
+  /tenant/{tenant_id}/change/password:
+    post:
+      tags:
+        - Profile
+      summary: Change Password
+      description: 'Change Password'
+      operationId: ten13
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: tenant_id
+          type: string
+          required: true
+        - in: query
+          name: password
+          type: string
+          required: true
+        - in: query
+          name: confirm_password
+          type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+        '400':
+          description: Bad request
+      security:
+        - api_key: [ ]
+
+  /tenant/{tenant_id}/get/product/plan:
+    post:
+      tags:
+        - Plan
+      summary: Get Subscription Plan
+      description: 'Get Product Plan'
+      operationId: ten3
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: tenant_id
+          type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+        '400':
+          description: Bad request
+      security:
+        - api_key: [ ]
+
+  /tenant/{tenant_id}/get/credit/plan:
+    post:
+      tags:
+        - Plan
+      summary: Get Credit Plan
+      description: 'Get Credit Plan'
+      operationId: ten4
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: tenant_id
+          type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+        '400':
+          description: Bad request
+      security:
+        - api_key: [ ]
+
+  /tenant/{tenant_id}/get/my/plan:
+    post:
+      tags:
+        - Plan
+      summary: Get My Plan
+      description: 'Get My Plan'
+      operationId: ten5
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: tenant_id
+          type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+        '400':
+          description: Bad request
+      security:
+        - api_key: [ ]
+
+  /tenant/{tenant_id}/plan/purchase:
+    post:
+      tags:
+        - Plan
+      summary: Single Plan Purchase
+      description: 'Single Plan Purchase'
+      operationId: ten6
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: tenant_id
+          type: string
+          required: true
+        - in: query
+          name: plan_id
+          type: integer
+          required: true
+        - in: query
+          name: card_number
+          type: string
+          required: true
+        - in: query
+          name: exp_month
+          type: string
+          required: true
+        - in: query
+          name: exp_year
+          type: string
+          required: true
+        - in: query
+          name: cvc
+          type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+        '400':
+          description: Bad request
+      security:
+        - api_key: [ ]
+
+
+  /tenant/{tenant_id}/create/new/oder:
+    post:
+      tags:
+        - Order
+      summary: Create New Order
+      description: 'Create New Order'
+      operationId: ord001
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: tenant_id
+          type: string
+          required: true
+        - in: path
+          name: plan_id
+          type: integer
+          required: true
+        - in: path
+          name: name
+          type: string
+          required: true
+        - in: path
+          name: email
+          type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+        '400':
+          description: Bad request
+
+  /tenant/{tenant_id}/get/order/list:
+    post:
+      tags:
+        - Order
+      summary: Get Order List
+      description: 'Get Order List'
+      operationId: ord002
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: tenant_id
+          type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+        '400':
+          description: Bad request
+
+  /tenant/{tenant_id}/get/order/details:
+    post:
+      tags:
+        - Order
+      summary: Get Order Details
+      description: 'Get Order Details'
+      operationId: ord003
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: tenant_id
+          type: string
+          required: true
+        - in: query
+          name: order_id
+          type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+        '400':
+          description: Bad request
+      security:
+        - api_key: [ ]
+
+  /tenant/{tenant_id}/email_accounts:
+    get:
+      tags:
+        - Email Accounts
+      summary: Get All Email Accounts
+      description: 'Get All Email Accounts List'
+      operationId: ten13
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: tenant_id
+          type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+        '403':
+          description: Bad request
+      security:
+        - api_key: [ ]
+
+  /tenant/{tenant_id}/email_account:
+    post:
+      tags:
+        - Email Accounts
+      summary: Create Email Account
+      description: 'Create Email Account'
+      operationId: ten14
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/x-www-form-urlencoded
+      parameters:
+        - in: path
+          name: tenant_id
+          type: string
+          required: true
+        - in: formData
+          name: smtp_from_email
+          type: string
+          required: true
+        - in: formData
+          name: smtp_from_name
+          type: string
+          required: true
+        - in: formData
+          name: smtp_host_name
+          type: string
+          required: true
+        - in: formData
+          name: smtp_user_name
+          type: string
+          required: true
+        - in: formData
+          name: smtp_password
+          type: string
+          required: true
+        - in: formData
+          name: smtp_port
+          type: string
+          required: true
+        - in: formData
+          name: imap_host_name
+          type: string
+          required: true
+        - in: formData
+          name: imap_user_name
+          type: string
+          required: true
+        - in: formData
+          name: imap_password
+          type: string
+          required: true
+        - in: formData
+          name: imap_port
+          type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+        '403':
+          description: Bad request
+      security:
+        - api_key: [ ]
+
+  /tenant/{tenant_id}/email_account/update:
+    post:
+      tags:
+        - Email Accounts
+      summary: Create Email Update
+      description: 'Create Email Update'
+      operationId: ten15
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/x-www-form-urlencoded
+      parameters:
+        - in: path
+          name: tenant_id
+          type: string
+          required: true
+        - in: formData
+          name: id
+          type: string
+          required: true
+        - in: formData
+          name: smtp_from_email
+          type: string
+          required: true
+        - in: formData
+          name: smtp_from_name
+          type: string
+          required: true
+        - in: formData
+          name: smtp_host_name
+          type: string
+          required: true
+        - in: formData
+          name: smtp_user_name
+          type: string
+          required: true
+        - in: formData
+          name: smtp_password
+          type: string
+          required: true
+        - in: formData
+          name: smtp_port
+          type: string
+          required: true
+        - in: formData
+          name: imap_host_name
+          type: string
+          required: true
+        - in: formData
+          name: imap_user_name
+          type: string
+          required: true
+        - in: formData
+          name: imap_password
+          type: string
+          required: true
+        - in: formData
+          name: imap_port
+          type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+        '403':
+          description: Bad request
+      security:
+        - api_key: [ ]
+
+  /tenant/{tenant_id}/email_account/delete:
+    post:
+      tags:
+        - Email Accounts
+      summary: Create Email Delete
+      description: 'Create Email Delete'
+      operationId: ten16
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/x-www-form-urlencoded
+      parameters:
+        - in: path
+          name: tenant_id
+          type: string
+          required: true
+        - in: formData
+          name: id
+          type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+        '403':
+          description: Bad request
+      security:
+        - api_key: [ ]
+
+  /tenant/{tenant_id}/templates:
+    get:
+      tags:
+        - Email Tempates
+      summary: Get All Email Tempates
+      description: 'Get All Email Tempates'
+      operationId: ten17
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: tenant_id
+          type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+        '403':
+          description: Bad request
+      security:
+        - api_key: [ ]
+
+  /tenant/{tenant_id}/template:
+    post:
+      tags:
+        - Email Tempates
+      summary: Create Tempates
+      description: 'Create Tempates'
+      operationId: ten18
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/x-www-form-urlencoded
+      parameters:
+        - in: path
+          name: tenant_id
+          type: string
+          required: true
+        - in: formData
+          name: name
+          type: string
+          required: true
+        - in: formData
+          name: content
+          type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+        '403':
+          description: Bad request
+      security:
+        - api_key: [ ]
+
+  /tenant/{tenant_id}/template/update:
+    post:
+      tags:
+        - Email Tempates
+      summary: Create Tempates
+      description: 'Create Tempates'
+      operationId: ten19
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/x-www-form-urlencoded
+      parameters:
+        - in: path
+          name: tenant_id
+          type: string
+          required: true
+        - in: formData
+          name: id
+          type: string
+          required: true
+        - in: formData
+          name: name
+          type: string
+          required: true
+        - in: formData
+          name: content
+          type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+        '403':
+          description: Bad request
+      security:
+        - api_key: [ ]
+
+  /tenant/{tenant_id}/template/delete:
+    post:
+      tags:
+        - Email Tempates
+      summary: Delete Tempates
+      description: 'Delete Tempates'
+      operationId: ten20
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/x-www-form-urlencoded
+      parameters:
+        - in: path
+          name: tenant_id
+          type: string
+          required: true
+        - in: formData
+          name: id
+          type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+        '403':
+          description: Bad request
+      security:
+        - api_key: [ ]
+
+  /tenant/{tenant_id}/email_lists:
+    get:
+      tags:
+        - Email List
+      summary: Get All Email List
+      description: 'Get All Email  List'
+      operationId: ten21
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: tenant_id
+          type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+        '403':
+          description: Bad request
+      security:
+        - api_key: [ ]
+
+  /tenant/{tenant_id}/email_list/{id}:
+    get:
+      tags:
+        - Email List
+      summary: Get Single Email List
+      description: 'Get Single Email  List'
+      operationId: ten34
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: tenant_id
+          type: string
+          required: true
+        - in: path
+          name: id
+          type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+        '403':
+          description: Bad request
+      security:
+        - api_key: [ ]
+
+  /tenant/{tenant_id}/email_list:
+    post:
+      tags:
+        - Email List
+      summary: Create Email List
+      description: 'Create Email List'
+      operationId: ten22
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/x-www-form-urlencoded
+      parameters:
+        - in: path
+          name: tenant_id
+          type: string
+          required: true
+        - in: formData
+          name: list_name
+          type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+        '403':
+          description: Bad request
+      security:
+        - api_key: [ ]
+
+  /tenant/{tenant_id}/email_list/update:
+    post:
+      tags:
+        - Email List
+      summary: Update Email List
+      description: 'Update Email List'
+      operationId: ten23
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/x-www-form-urlencoded
+      parameters:
+        - in: path
+          name: tenant_id
+          type: string
+          required: true
+        - in: formData
+          name: id
+          type: string
+          required: true
+        - in: formData
+          name: list_name
+          type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+        '403':
+          description: Bad request
+      security:
+        - api_key: [ ]
+
+  /tenant/{tenant_id}/email_list/delete:
+    post:
+      tags:
+        - Email List
+      summary: Delete Email List
+      description: 'Delete Email List'
+      operationId: ten24
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/x-www-form-urlencoded
+      parameters:
+        - in: path
+          name: tenant_id
+          type: string
+          required: true
+        - in: formData
+          name: id
+          type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+        '403':
+          description: Bad request
+      security:
+        - api_key: [ ]
+
+  /tenant/{tenant_id}/email_lists/subscriber/{list_id}:
+    get:
+      tags:
+        - Email Subscriber
+      summary: Get All Email Subscriber
+      description: 'Get All Email  Subscriber'
+      operationId: ten21
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: tenant_id
+          type: string
+          required: true
+        - in: path
+          name: list_id
+          type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+        '403':
+          description: Bad request
+      security:
+        - api_key: [ ]
+
+  /tenant/{tenant_id}/email_list/subscriber/{list_id}/create:
+    post:
+      tags:
+        - Email Subscriber
+      summary: Create Email Subscriber
+      description: 'Create Email Subscriber'
+      operationId: ten22
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/x-www-form-urlencoded
+      parameters:
+        - in: path
+          name: tenant_id
+          type: string
+          required: true
+        - in: path
+          name: list_id
+          type: string
+          required: true
+        - in: formData
+          name: email
+          type: string
+          required: true
+        - in: formData
+          name: first_name
+          type: string
+          required: false
+        - in: formData
+          name: last_name
+          type: string
+          required: false
+      responses:
+        '200':
+          description: successful operation
+        '403':
+          description: Bad request
+      security:
+        - api_key: [ ]
+
+  /tenant/{tenant_id}/email_list/subscriber/{list_id}/update/{subsrciber_id}:
+    post:
+      tags:
+        - Email Subscriber
+      summary: Update Email Subscriber
+      description: 'Update Email Subscriber'
+      operationId: ten23
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/x-www-form-urlencoded
+      parameters:
+        - in: path
+          name: tenant_id
+          type: string
+          required: true
+        - in: path
+          name: list_id
+          type: string
+          required: true
+        - in: path
+          name: subsrciber_id
+          type: string
+          required: true
+        - in: formData
+          name: email
+          type: string
+          required: true
+        - in: formData
+          name: first_name
+          type: string
+          required: false
+        - in: formData
+          name: last_name
+          type: string
+          required: false
+      responses:
+        '200':
+          description: successful operation
+        '403':
+          description: Bad request
+      security:
+        - api_key: [ ]
+
+  /tenant/{tenant_id}/email_list/subscriber/{list_id}/delete/{subsrciber_id}:
+    delete:
+      tags:
+        - Email Subscriber
+      summary: Delete Email Subscriber
+      description: 'Delete Email Subscriber'
+      operationId: ten24
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/x-www-form-urlencoded
+      parameters:
+        - in: path
+          name: tenant_id
+          type: string
+          required: true
+        - in: path
+          name: list_id
+          type: string
+          required: true
+        - in: path
+          name: subsrciber_id
+          type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+        '403':
+          description: Bad request
+      security:
+        - api_key: [ ]
+
+  /tenant/{tenant_id}/drip_campaign:
+    get:
+      tags:
+        - Email Campaign
+      summary: Get All Email Campaign
+      operationId: ten25
+      consumes:
+        - application/json
+      parameters:
+        - in: path
+          name: tenant_id
+          type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+        '403':
+          description: Bad request
+      security:
+        - api_key: [ ]
+
+  /tenant/{tenant_id}/drip_campaign/{id}:
+    get:
+      tags:
+        - Email Campaign
+      summary: Get Single Email Campaign
+      operationId: ten33
+      consumes:
+        - application/json
+      parameters:
+        - in: path
+          name: tenant_id
+          type: string
+          required: true
+        - in: path
+          name: id
+          type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+        '403':
+          description: Bad request
+      security:
+        - api_key: [ ]
+
+  /tenant/{tenant_id}/drip_campaign/create:
+    post:
+      tags:
+        - Email Campaign
+      summary: Create Email Campaign
+      operationId: ten26
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/x-www-form-urlencoded
+      parameters:
+        - in: path
+          name: tenant_id
+          type: string
+          required: true
+        - in: formData
+          name: campaign_name
+          type: string
+          required: true
+        - in: formData
+          name: from_name
+          type: string
+          required: true
+        - in: formData
+          name: from_email
+          type: string
+          required: true
+        - in: formData
+          name: subject
+          type: string
+          required: true
+        - in: formData
+          name: list_id
+          type: string
+          required: true
+        - in: formData
+          name: smtp_id
+          type: string
+          required: true
+        - in: formData
+          name: email_body
+          type: string
+          required: true
+        - in: formData
+          name: delay_email
+          type: string
+          required: false
+        - in: formData
+          name: max_email
+          type: string
+          required: false
+        - in: formData
+          name: tracking
+          type: string
+          required: false
+        - in: formData
+          name: stop_on_reply
+          type: string
+          required: false
+        - in: formData
+          name: start_date
+          type: string
+          required: false
+        - in: formData
+          name: days
+          type: string
+          required: true
+        - in: formData
+          name: start_at
+          type: string
+          required: true
+        - in: formData
+          name: stop_at
+          type: string
+          required: true
+        - in: formData
+          name: time_zone
+          type: string
+          required: true
+        - in: formData
+          name: wait_time
+          type: array
+          items: {
+            type: string
+          }
+          required: false
+        - in: formData
+          name: sq_subject
+          type: array
+          items: {
+            type: string
+          }
+          required: false
+        - in: formData
+          name: sq_body
+          type: array
+          items: {
+            type: string
+          }
+          required: false
+      responses:
+        '200':
+          description: successful operation
+        '403':
+          description: Bad request
+      security:
+        - api_key: [ ]
+
+  /tenant/{tenant_id}/drip_campaign/update:
+    post:
+      tags:
+        - Email Campaign
+      summary: Create Email Campaign
+      operationId: ten27
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/x-www-form-urlencoded
+      parameters:
+        - in: path
+          name: tenant_id
+          type: string
+          required: true
+        - in: formData
+          name: drip_id
+          type: string
+          required: true
+        - in: formData
+          name: campaign_name
+          type: string
+          required: true
+        - in: formData
+          name: from_name
+          type: string
+          required: true
+        - in: formData
+          name: from_email
+          type: string
+          required: true
+        - in: formData
+          name: subject
+          type: string
+          required: true
+        - in: formData
+          name: list_id
+          type: string
+          required: true
+        - in: formData
+          name: smtp_id
+          type: string
+          required: true
+        - in: formData
+          name: email_body
+          type: string
+          required: true
+        - in: formData
+          name: delay_email
+          type: string
+          required: false
+        - in: formData
+          name: max_email
+          type: string
+          required: false
+        - in: formData
+          name: tracking
+          type: string
+          required: false
+        - in: formData
+          name: stop_on_reply
+          type: string
+          required: false
+        - in: formData
+          name: start_date
+          type: string
+          required: false
+        - in: formData
+          name: days
+          type: string
+          required: true
+        - in: formData
+          name: start_at
+          type: string
+          required: true
+        - in: formData
+          name: stop_at
+          type: string
+          required: true
+        - in: formData
+          name: time_zone
+          type: string
+          required: true
+        - in: formData
+          name: drip_sq_id
+          type: array
+          items: {
+            type: string
+          }
+          required: false
+        - in: formData
+          name: wait_time
+          type: array
+          items: {
+            type: string
+          }
+          required: false
+        - in: formData
+          name: sq_subject
+          type: array
+          items: {
+            type: string
+          }
+          required: false
+        - in: formData
+          name: sq_body
+          type: array
+          items: {
+            type: string
+          }
+          required: false
+      responses:
+        '200':
+          description: successful operation
+        '403':
+          description: Bad request
+      security:
+        - api_key: [ ]
+
+  /tenant/{tenant_id}/drip_campaign/delete:
+    post:
+      tags:
+        - Email Campaign
+      summary: Delete Email Campaign
+      description: 'Delete Email Campaign'
+      operationId: ten28
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/x-www-form-urlencoded
+      parameters:
+        - in: path
+          name: tenant_id
+          type: string
+          required: true
+        - in: formData
+          name: drip_id
+          type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+        '403':
+          description: Bad request
+      security:
+        - api_key: [ ]
+
+
+  #  stripe subscription api
+  /tenant/{tenant_id}/stripe/get/price/list:
+    post:
+      tags:
+        - Stripe
+      summary: Get Stripe Price List
+      description: 'Get Stripe Price List'
+      operationId: strp1
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/x-www-form-urlencoded
+      parameters:
+        - in: path
+          name: tenant_id
+          type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+        '403':
+          description: Bad request
+      security:
+        - api_key: [ ]
+
+  /tenant/{tenant_id}/stripe/create/customer:
+    post:
+      tags:
+        - Stripe
+      summary: Stripe Create Customer
+      description: 'Stripe Create Customer'
+      operationId: strp2
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/x-www-form-urlencoded
+      parameters:
+        - in: path
+          name: tenant_id
+          type: string
+          required: true
+        - in: query
+          name: name
+          type: string
+          required: true
+        - in: query
+          name: email
+          type: string
+          required: true
+        - in: query
+          name: phone
+          type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+        '403':
+          description: Bad request
+      security:
+        - api_key: [ ]
+
+
+  /tenant/{tenant_id}/stripe/create/card/token:
+    post:
+      tags:
+        - Stripe
+      summary: Stripe Create Card Token
+      description: 'Stripe Create Card Token'
+      operationId: strptok001
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/x-www-form-urlencoded
+      parameters:
+        - in: path
+          name: tenant_id
+          type: string
+          required: true
+        - in: query
+          name: number
+          type: string
+          required: true
+        - in: query
+          name: exp_month
+          type: integer
+          required: true
+        - in: query
+          name: exp_year
+          type: integer
+          required: true
+        - in: query
+          name: cvc
+          type: integer
+          required: true
+      responses:
+        '200':
+          description: successful operation
+        '403':
+          description: Bad request
+      security:
+        - api_key: [ ]
+
+  /tenant/{tenant_id}/stripe/card/list:
+    post:
+      tags:
+        - Stripe
+      summary: Stripe Customer Card List
+      description: 'Stripe Customer Card List'
+      operationId: strp3
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/x-www-form-urlencoded
+      parameters:
+        - in: path
+          name: tenant_id
+          type: string
+          required: true
+        - in: query
+          name: customer_id
+          type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+        '403':
+          description: Bad request
+      security:
+        - api_key: [ ]
+
+  /tenant/{tenant_id}/stripe/card/create:
+    post:
+      tags:
+        - Stripe
+      summary: Stripe Customer Card Create
+      description: 'Stripe Customer Card Create'
+      operationId: strp4
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/x-www-form-urlencoded
+      parameters:
+        - in: path
+          name: tenant_id
+          type: string
+          required: true
+        - in: query
+          name: card_token
+          type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+        '403':
+          description: Bad request
+      security:
+        - api_key: [ ]
+
+  /tenant/{tenant_id}/stripe/create/subscription:
+    post:
+      tags:
+        - Stripe
+      summary: Stripe Create Subscription
+      description: 'Stripe Create Subscription'
+      operationId: strp5
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/x-www-form-urlencoded
+      parameters:
+        - in: path
+          name: tenant_id
+          type: string
+          required: true
+        - in: query
+          name: customer_id
+          type: string
+          required: true
+        - in: query
+          name: price_id
+          type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+        '403':
+          description: Bad request
+      security:
+        - api_key: [ ]
+
+  /university/content:
+    post:
+      tags:
+        - University
+      summary: Get University Content
+      description: 'Get University Content'
+      operationId: un001
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: successful operation
+        '400':
+          description: Bad request
+
+  /email/template:
+    post:
+      tags:
+        - Public Email Template
+      summary: Get Public Email Template
+      description: 'Get Public Email Template'
+      operationId: pubEmTem001
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: successful operation
+        '400':
+          description: Bad request
+
+
+  /public/{tenant_id}/get/user/order/list:
+    post:
+      tags:
+        - Public
+      summary: Public Order List
+      description: 'Public Order List'
+      operationId: pubord1
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: tenant_id
+          type: string
+          required: true
+        - in: query
+          name: user_id
+          type: integer
+          required: true
+      responses:
+        '200':
+          description: successful operation
+        '400':
+          description: Bad request
+
+  /tenant/{tenant_id}/drip_respond/send:
+    post:
+      tags:
+        - Drip Respond
+      summary: Create Drip Respond
+      operationId: drip01
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/x-www-form-urlencoded
+      parameters:
+        - in: path
+          name: tenant_id
+          type: string
+          required: true
+        - in: formData
+          name: drip_id
+          type: string
+          required: true
+        - in: formData
+          name: reply_id
+          type: string
+          required: true
+        - in: formData
+          name: from_name
+          type: string
+          required: true
+        - in: formData
+          name: from_email
+          type: string
+          required: true
+        - in: formData
+          name: email_body
+          type: string
+          required: true
+      responses:
+        '200':
+          description: successful operation
+        '403':
+          description: Bad request
+      security:
+        - api_key: [ ]
+
+  /tenant/{tenant_id}/save/usage:
+    post:
+      tags:
+        - Billing Usage
+      summary: Save Usage
+      operationId: usg001
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/x-www-form-urlencoded
+      parameters:
+        - in: path
+          name: tenant_id
+          type: string
+          required: true
+        - in: query
+          name: plan_id
+          type: integer
+          required: true
+        - in: query
+          name: usage_number
+          type: integer
+          required: true
+        - in: query
+          name: type
+          type: integer
+          required: true
+
+      responses:
+        '200':
+          description: successful operation
+        '403':
+          description: Bad request
+      security:
+        - api_key: [ ]
+
+
+
+
+
+securityDefinitions:
+  api_key:
+    type: apiKey
+    name: Authorization
+    in: header
